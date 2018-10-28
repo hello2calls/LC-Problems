@@ -44,4 +44,24 @@ var findSecondMinimumValue = function(root) {
     let res = Math.min(traverse(root.left), traverse(root.right));
     return res === Infinity ? -1 : res;
 };
+
+//another version
+var findSecondMinimumValue = function(root) {
+    let min1 = Infinity;
+    let min2 = Infinity;
+    const traverse = (node) => {
+        if(!node) return;
+        if(node.val < min1){
+            min2 = min1;
+            min1 = node.val;
+        }else if(node.val > min1 && node.val < min2){
+            min2 = node.val
+        }
+        traverse(node.left);
+        traverse(node.right);
+    }
+    traverse(root);
+    if(min2 === Infinity) return -1;
+    return min2;
+};
 ```
