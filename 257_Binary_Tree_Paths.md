@@ -32,3 +32,6 @@ var binaryTreePaths = function(root) {
     return result;
 };
 ```
+
+Time: O(n)
+Space: O(n)
